@@ -1,28 +1,44 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Sparkles } from "lucide-react";
+import { Check, Minus, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const features = [
-  "Menu & Unlimited Items",
-  "Item Category",
-  "Area & Table Management",
-  "Reservations",
-  "KOT (Kitchen Order Tickets)",
-  "Unlimited Orders",
-  "Customer Management",
-  "Unlimited Staff Accounts",
-  "Reports & Export",
-  "Delivery Executive",
-  "Waiter Requests",
-  "Expenses Tracking",
-  "Payment Gateway Integration",
-  "Theme & Settings",
-  "Customer Display",
+type Feature = {
+  name: string;
+  note?: string;
+  starter: boolean;
+  silver: boolean;
+  platinum: boolean;
+};
+
+const features: Feature[] = [
+  { name: "Menu", starter: true, silver: true, platinum: true },
+  { name: "Menu Item", note: "Unlimited", starter: true, silver: true, platinum: true },
+  { name: "Item Category", starter: true, silver: true, platinum: true },
+  { name: "Area", starter: false, silver: true, platinum: true },
+  { name: "Table", starter: true, silver: true, platinum: true },
+  { name: "Reservation", starter: false, silver: true, platinum: true },
+  { name: "KOT", starter: false, silver: true, platinum: true },
+  { name: "Order", note: "Unlimited", starter: true, silver: true, platinum: true },
+  { name: "Customer", starter: true, silver: true, platinum: true },
+  { name: "Staff", note: "Unlimited", starter: true, silver: true, platinum: true },
+  { name: "Report", starter: false, silver: true, platinum: true },
+  { name: "Delivery Executive", starter: false, silver: true, platinum: true },
+  { name: "Waiter Request", starter: false, silver: true, platinum: true },
+  { name: "Expenses", starter: false, silver: true, platinum: true },
+  { name: "Payment", starter: true, silver: true, platinum: true },
+  { name: "Settings", starter: false, silver: true, platinum: true },
+  { name: "Change Branch", starter: false, silver: false, platinum: true },
+  { name: "Export Report", starter: false, silver: false, platinum: true },
+  { name: "Table Reservation", starter: false, silver: false, platinum: true },
+  { name: "Payment Gateway Integration", starter: false, silver: false, platinum: true },
+  { name: "Theme Setting", starter: false, silver: false, platinum: true },
+  { name: "Customer Display", starter: false, silver: false, platinum: true },
 ];
 
 const plans = [
   {
+    key: "starter" as const,
     name: "Starter",
     monthlyPrice: 5,
     annualPrice: 50,
@@ -30,6 +46,7 @@ const plans = [
     popular: false,
   },
   {
+    key: "silver" as const,
     name: "Silver",
     monthlyPrice: 10,
     annualPrice: 100,
@@ -37,6 +54,7 @@ const plans = [
     popular: true,
   },
   {
+    key: "platinum" as const,
     name: "Platinum",
     monthlyPrice: 20,
     annualPrice: 200,
@@ -140,12 +158,29 @@ const PricingSection = () => {
                 </Button>
               </a>
               <ul className="mt-8 flex-1 space-y-3">
-                {features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    {f}
-                  </li>
-                ))}
+                {features.map((f) => {
+                  const included = f[plan.key];
+                  return (
+                    <li
+                      key={f.name}
+                      className={`flex items-start gap-2 text-sm ${
+                        included ? "text-muted-foreground" : "text-muted-foreground/40"
+                      }`}
+                    >
+                      {included ? (
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      ) : (
+                        <Minus className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/30" />
+                      )}
+                      <span className={included ? "" : "line-through"}>
+                        {f.name}
+                        {f.note && (
+                          <span className="ml-1 text-xs font-semibold text-primary">({f.note})</span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           ))}
