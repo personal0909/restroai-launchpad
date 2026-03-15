@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const links = [
     { label: "Features", href: "#features" },
-    { label: "How It Works", href: "#how-it-works" },
+    { label: "Live Demo", href: "https://app.restroai.online/restaurant/10d", external: true },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -24,7 +24,7 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            <a key={l.href} href={l.href} {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {l.label}
             </a>
           ))}
@@ -45,7 +45,7 @@ const Navbar = () => {
       {open && (
         <div className="border-t border-border bg-background px-6 py-4 md:hidden">
           {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-muted-foreground">
+            <a key={l.href} href={l.href} {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-muted-foreground">
               {l.label}
             </a>
           ))}
