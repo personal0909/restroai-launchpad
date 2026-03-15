@@ -45,7 +45,7 @@ const Navbar = () => {
       {open && (
         <div className="border-t border-border bg-background px-6 py-4 md:hidden">
           {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-muted-foreground">
+            <a key={l.href} href={l.href} {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-muted-foreground">
               {l.label}
             </a>
           ))}
