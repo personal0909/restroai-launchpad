@@ -24,7 +24,7 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            <a key={l.href} href={l.href} {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {l.label}
             </a>
           ))}
