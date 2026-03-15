@@ -52,12 +52,12 @@ const HeroSection = () => (
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.15 }}
-        className="flex justify-center"
+        className="flex items-center justify-center"
       >
         <img
           src={heroTablet}
           alt="RestroAI POS dashboard on a tablet"
-          className="w-full max-w-md drop-shadow-2xl lg:max-w-lg"
+          className="w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl drop-shadow-2xl"
         />
       </motion.div>
     </div>
