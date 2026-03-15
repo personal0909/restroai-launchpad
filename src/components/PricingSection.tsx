@@ -142,7 +142,7 @@ const PricingSection = () => {
                 <span className="text-sm text-muted-foreground">/{annual ? "year" : "month"}</span>
               </div>
               <a
-                href="https://app.restroai.online"
+                href="https://app.restroai.online/restaurant-signup"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6"

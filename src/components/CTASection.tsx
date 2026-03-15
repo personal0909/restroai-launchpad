@@ -10,7 +10,7 @@ const CTASection = () => (
       <p className="mt-4 text-background/70">
         Join hundreds of restaurants already using RestroAI to streamline their operations.
       </p>
-      <a href="https://app.restroai.online" target="_blank" rel="noopener noreferrer">
+      <a href="https://app.restroai.online/restaurant-signup" target="_blank" rel="noopener noreferrer">
         <Button size="lg" className="mt-8 gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
           Get Started Free <ArrowRight className="h-4 w-4" />
         </Button>
