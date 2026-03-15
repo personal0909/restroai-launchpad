@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const links = [
     { label: "Features", href: "#features" },
-    { label: "How It Works", href: "#how-it-works" },
+    { label: "Live Demo", href: "https://app.restroai.online/restaurant/10d", external: true },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
