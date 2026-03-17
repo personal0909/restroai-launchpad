@@ -39,12 +39,6 @@ const HeroSection = () => (
             </Button>
           </a>
         </div>
-        <div className="mt-5 flex items-center gap-2">
-          <a href="https://instagram.com/restroai.online" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary">
-            <Instagram className="h-5 w-5" />
-            Follow us on Insta <span className="font-semibold text-foreground">(2K+ and counting)</span>
-          </a>
-        </div>
       </motion.div>
 
       {/* Right – Tablet mockup */}
